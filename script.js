@@ -8,7 +8,7 @@
    CONFIGURATION
    Add your TMDB API key here:
 =========================== */
-const TMDB_API_KEY_HARDCODED = "11472c72c3073f44a6fad9e1c649762e"; // Paste your TMDB API key here
+const TMDB_API_KEY_HARDCODED = "###################"; // Paste your TMDB API key here
 
 const TMDB_API_BASE_URL = "https://api.themoviedb.org/3";
 const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
