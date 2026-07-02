@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CineMatch — Series Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="noise"></div>
+
+  <div class="wrapper">
+
+    <header class="site-header">
+      <div class="logo">
+        <span class="logo-icon">▶</span>
+        <span class="logo-text">CineMatch</span>
+      </div>
+      <p class="tagline">Your next obsession is one click away</p>
+    </header>
+
+    <!-- Controls Card -->
+    <div class="card">
+      <div class="card-inner">
+
+        <div class="step-label">Step 1 — Pick a genre</div>
+        <div class="genre-grid">
+          <button class="genre-pill" data-genre="action">⚡ Action</button>
+          <button class="genre-pill" data-genre="comedy">😂 Comedy</button>
+          <button class="genre-pill" data-genre="drama">🎭 Drama</button>
+          <button class="genre-pill" data-genre="sci-fi">🚀 Sci-Fi</button>
+          <button class="genre-pill" data-genre="fantasy">🐉 Fantasy</button>
+          <button class="genre-pill" data-genre="romance">💘 Romance</button>
+          <button class="genre-pill" data-genre="anime">✨ Anime</button>
+          <button class="genre-pill" data-genre="horror">👻 Horror</button>
+          <button class="genre-pill" data-genre="thriller">🔪 Thriller</button>
+          <button class="genre-pill" data-genre="documentary">🎥 Documentary</button>
+          <button class="genre-pill" data-genre="western">🤠 Western</button>
+          <button class="genre-pill" data-genre="BL">🌸 BL</button>
+        </div>
+
+        <div class="step-label" id="langStep" style="opacity:0;pointer-events:none;">Step 2 — Choose a language</div>
+        <div class="lang-row" id="langRow"></div>
+
+        <button class="cta-btn" onclick="getRecommendations()">
+          <span class="btn-text">Find Series</span>
+          <span class="btn-arrow">→</span>
+        </button>
+
+      </div>
+    </div>
+
+    <div id="recommendations"></div>
+
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const keyFromUrl = params.get("tmdb_key");
+      const keyFromStorage = window.localStorage?.getItem?.("TMDB_API_KEY") || "";
+      const key = keyFromUrl || keyFromStorage || "";
+
+      if (key) {
+        window.TMDB_API_KEY = key;
+        window.localStorage?.setItem?.("TMDB_API_KEY", key);
+      }
+    })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
